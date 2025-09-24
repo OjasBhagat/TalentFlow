@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --accent: #3b82f6;
+    --muted: #6b7280;
+    --bg: #f7fafc;
+    --text: #0f172a;
+    --card-bg: #ffffff;
+    --border: #e5e7eb;
+    --btn-bg: #ffffff;
+    --btn-text: #111827;
+  }
+
+  * {
+    @apply box-border font-sans;
+  }
+
+  body {
+    @apply m-0 p-4 bg-gray-50 text-slate-900;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, 'Segoe UI', Roboto, system-ui, -apple-system, Helvetica, Arial;
+  }
+
+  h1 {
+    @apply m-0 mb-4;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-full mx-auto px-2;
+  }
+
+  .job-form {
+    @apply flex gap-2 mb-4;
+  }
+
+  .job-form input,
+  .job-form select {
+    @apply flex-1 p-2 border border-gray-200 rounded-md bg-white text-slate-900;
+  }
+
+  .job-form button {
+    @apply px-3 py-2 bg-blue-500 text-white border-none rounded-md;
+  }
+
+  .job-list {
+    @apply list-none p-0 m-0 w-full;
+  }
+
+  .job-item {
+    @apply flex justify-between items-center p-3 border border-gray-200 rounded-lg mb-2 bg-white w-full;
+  }
+
+  .job-main {
+    @apply flex-1 min-w-0;
+  }
+
+  .job-actions {
+    @apply flex gap-2 flex-wrap items-center;
+  }
+
+  .job-item .meta {
+    @apply text-gray-500 text-sm;
+  }
+
+  .delete {
+    @apply bg-red-500 text-white border-none px-2 py-2 rounded-md;
+  }
+
+  .job-item.filled {
+    @apply opacity-60 bg-slate-100;
+  }
+
+  .job-item.filled strong {
+    @apply line-through;
+  }
+
+  .job-item.drag-over {
+    @apply outline-2 outline-dashed outline-blue-300 bg-blue-50;
+  }
+
+  .job-item.archived {
+    @apply opacity-50 italic;
+  }
+
+  .spinner {
+    @apply inline-block w-4 h-4 border-2 border-gray-200 border-l-blue-500 rounded-full animate-spin;
+  }
+
+  .selected-item {
+    @apply bg-blue-50;
+  }
+
+  .muted {
+    @apply text-gray-500;
+  }
+
+  .bulk-controls {
+    @apply flex gap-2 items-center;
+  }
+
+  .disabled-overlay {
+    @apply opacity-60 pointer-events-none;
+  }
+
+  .btn {
+    @apply appearance-none border border-gray-200 bg-white text-gray-900 px-3 py-2 rounded-lg cursor-pointer transition-all duration-150 ease-in-out hover:shadow-sm disabled:opacity-55 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-blue-500 border-blue-500 text-white hover:brightness-95;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 border-red-500 text-white;
+  }
+  .btn-muted {
+    @apply bg-gray-100 text-gray-700;
+  }
+
+  .input {
+    @apply py-2.5 px-3 border border-gray-200 rounded-lg bg-white text-slate-900 w-full;
+  }
+
+  .select {
+    @apply py-2.5 px-3 border border-gray-200 rounded-lg bg-white text-slate-900;
+  }
+
+  .toolbar {
+    @apply flex gap-2 items-center flex-wrap bg-white/75 border border-gray-200 rounded-xl p-2 backdrop-blur-sm backdrop-saturate-150;
+  }
+
+  .card {
+    @apply bg-white border border-gray-200 rounded-xl p-3 hover:shadow-lg hover:shadow-gray-900/5;
+  }
+
+  .badge {
+    @apply inline-block text-xs py-1 px-2 rounded-full bg-blue-50 text-blue-700 border border-gray-200;
+  }
+
+  .badge-gray {
+    @apply bg-gray-100 text-gray-700;
+  }
+
+  .badge-green {
+    @apply bg-green-100 text-green-700;
+  }
+
+  .badge-yellow {
+    @apply bg-yellow-100 text-yellow-700;
+  }
+
+  .badge-red {
+    @apply bg-red-100 text-red-700;
+  }
+
+  .pager {
+    @apply flex gap-2 items-center mt-2;
+  }
+
+  .pager .page {
+    @apply py-1.5 px-2.5 border border-gray-200 rounded-lg bg-white text-slate-900;
+  }
+
+  .stage-card {
+    @apply bg-white border border-gray-200;
+  }
+
+  .stage-row {
+    @apply flex justify-between items-center py-1 px-1.5 rounded-md;
+  }
+
+  .stage-row + .stage-row {
+    @apply mt-1;
+  }
+
+  .stage-label {
+    @apply text-slate-900 font-medium text-sm;
+  }
+
+  .stage-count {
+    @apply font-semibold text-slate-900;
+  }
+
+  .mobile-blocker {
+    @apply fixed inset-0 bg-gray-50 text-slate-900 flex items-center justify-center z-50 p-6 text-center;
+  }
+
+  .mobile-blocker .inner {
+    @apply max-w-lg;
+  }
+
+  .mobile-blocker h2 {
+    @apply m-0 mb-2;
+  }
+
+  .mobile-blocker p {
+    @apply m-0 mb-3 text-gray-500;
+  }
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .container {
+    @apply max-w-2xl px-3;
+  }
+  body {
+    @apply p-5;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    @apply max-w-3xl;
+  }
+  body {
+    @apply p-6;
+  }
+  .mobile-blocker {
+    @apply hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    @apply max-w-4xl;
+  }
+  body {
+    @apply p-6;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    @apply max-w-5xl;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .toolbar {
+    @apply gap-2;
+  }
+  .toolbar input,
+  .toolbar select,
+  .toolbar button {
+    @apply flex-1 w-full;
+  }
+  .job-form {
+    @apply flex-wrap;
+  }
+  .job-form input,
+  .job-form select,
+  .job-form button {
+    @apply flex-1 w-full;
+  }
+}
