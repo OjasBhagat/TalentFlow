@@ -11,10 +11,15 @@ export default function JobList({ jobs, onDelete, onUpdate, onArchive, onReorder
 
  
 
-  if (!loading && (!items || items.length === 0))
-    return  <div className="flex justify-center items-center p-8">
-      <div className="w-12 h-12 border-4 border-amber-300 border-t-amber-600 rounded-full animate-spin"></div>
-    </div>
+if (!loading && (!items || items.length === 0))
+    return (
+        <div className="flex items-center justify-center p-8">
+            <div className="p-4 bg-white border border-gray-200 rounded-xl shadow-sm transition hover:shadow-md text-center">
+                <p className="text-gray-900 font-medium text-lg">No jobs to display</p>
+                <p className="text-sm text-gray-500">Please check back later or add a new job!</p>
+            </div>
+        </div>
+    )
 
   const startEdit = (job) => {
     setEditingId(job.id);
