@@ -137,7 +137,7 @@ export default function App() {
           <Route path="/candidates" element={<HRGate><CandidatesPage addToast={addToast} pendingIds={pendingIds} addPending={addPending} removePending={removePending} /></HRGate>} />
           <Route path="/candidates/:candidateId" element={<HRGate><CandidateProfilePage addToast={addToast} /></HRGate>} />
           <Route path="/kanban" element={<HRGate><KanbanPage addToast={addToast} pendingIds={pendingIds} addPending={addPending} removePending={removePending} /></HRGate>} />
-          <Route path="/assessments" element={<HRGate><AssessmentsPage jobs={jobs}/></HRGate>} />
+          <Route path="/assessments" element={<HRGate><AssessmentsPage/></HRGate>} />
           <Route path="/assessments/:jobId" element={<HRGate><AssessmentBuilderPage /></HRGate>} />
           <Route path="/assessments/:jobId/run" element={<HRGate><AssessmentRunnerPage /></HRGate>} />
         </Routes>

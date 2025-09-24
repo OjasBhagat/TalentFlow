@@ -1,11 +1,32 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import { PrimaryButton } from '../../components/common/buttons/PrimaryButton'
 import { SecondaryButton } from '../../components/common/buttons/SecondaryButton'
 
-export default function AssessmentsPage({ jobs }) {
+export default function AssessmentsPage() {
+  const [jobs, setJobs] = useState([])
+  const [loading, setLoading] = useState(true)
   const navigate = useNavigate()
-
+   const fetchJobs = async () => {
+      setLoading(true)
+      try {
+        const res = await fetch('/api/jobs')
+        const data = await res.json()
+        setJobs(data.jobs || [])
+      } catch (err) {
+        console.error('Failed to fetch jobs', err)
+      } finally {
+        setLoading(false)
+      }
+    }
+  
+    useEffect(() => { fetchJobs() }, [])
+    if (loading) return (
+    <div className="flex justify-center items-center p-8">
+      <div className="w-12 h-12 border-4 border-amber-300 border-t-amber-600 rounded-full animate-spin"></div>
+    </div>
+  )
   return (
     <div className="p-4">
       <p className="text-gray-500 mb-4">
