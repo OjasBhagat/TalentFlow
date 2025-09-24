@@ -8,12 +8,13 @@ export default function JobList({ jobs, onDelete, onUpdate, onArchive, onReorder
   const [dragOverId, setDragOverId] = useState(null);
 
   const items = Array.isArray(jobs) ? jobs.filter(Boolean) : [];
-if (loading) return (
-  <div className="flex justify-center items-center p-8">
-    <div className="w-12 h-12 border-4 border-amber-300 border-t-amber-600 rounded-full animate-spin"></div>
-  </div>
-);
-  if (!items || items.length === 0) return <div className="p-4 rounded-xl shadow-md bg-white text-gray-500 text-center">No jobs yet — add the first one!</div>;
+
+ 
+
+  if (!loading && (!items || items.length === 0))
+    return  <div className="flex justify-center items-center p-8">
+      <div className="w-12 h-12 border-4 border-amber-300 border-t-amber-600 rounded-full animate-spin"></div>
+    </div>
 
   const startEdit = (job) => {
     setEditingId(job.id);
@@ -45,14 +46,8 @@ if (loading) return (
     e.dataTransfer.setData('text/plain', String(id));
     e.dataTransfer.effectAllowed = 'move';
   };
-
-  const handleDragOver = (e, id) => {
-    e.preventDefault();
-    setDragOverId(id);
-  };
-
+  const handleDragOver = (e, id) => { e.preventDefault(); setDragOverId(id); };
   const handleDragLeave = () => setDragOverId(null);
-
   const handleDrop = (e, targetId) => {
     e.preventDefault();
     const srcId = e.dataTransfer.getData('text/plain');
@@ -88,7 +83,10 @@ if (loading) return (
           onDragOver={(e) => handleDragOver(e, job.id)}
           onDragLeave={handleDragLeave}
           onDrop={(e) => handleDrop(e, job.id)}
-          className={`p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition ${dragOverId === job.id ? 'outline-2 outline-dashed outline-blue-300 bg-blue-50' : ''} ${job.status === 'filled' ? 'opacity-60 line-through' : ''} ${job.archived ? 'opacity-50 italic' : ''}`}
+          className={`p-4 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition
+            ${dragOverId === job.id ? 'outline-2 outline-dashed outline-blue-300 bg-blue-50' : ''}
+            ${job.status === 'filled' ? 'opacity-60 line-through' : ''}
+            ${job.archived ? 'opacity-50 italic' : ''}`}
         >
           <div className="flex justify-between items-start gap-4">
             <div className="flex-1 min-w-0">
