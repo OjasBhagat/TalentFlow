@@ -55,6 +55,56 @@ If you're accessing the deployed version, use the master password: **`password`*
 
 ---
 
+## Component Tree Structure
+
+```
+TalentFlow/
+├── src/
+│   ├── App.jsx                          # Main application component
+│   ├── main.jsx                         # React entry point
+│   ├── server.js                        # MirageJS mock server
+│   │
+│   ├── pages/                           # Page-level components
+│   │   ├── login/
+│   │   │   └── LoginPage.jsx           # Authentication page
+│   │   ├── jobs/
+│   │   │   ├── JobsPage.jsx            # Job management page
+│   │   │   └── JobDetailsPage.jsx      # Individual job details
+│   │   ├── candidates/
+│   │   │   ├── CandidatesPage.jsx      # Candidate listing page
+│   │   │   └── CandidateProfilePage.jsx # Individual candidate profile
+│   │   ├── assessments/
+│   │   │   ├── AssessmentsPage.jsx     # Assessment overview
+│   │   │   ├── AssessmentBuilderPage.jsx # Assessment creation tool
+│   │   │   └── AssessmentRunnerPage.jsx # Assessment taking interface
+│   │   └── kanban/
+│   │       └── KanbanPage.jsx          # Visual pipeline board
+│   │
+│   ├── components/                      # Reusable UI components
+│   │   ├── auth/
+│   │   │   └── HRGate.jsx              # Authentication guard
+│   │   ├── jobs/
+│   │   │   ├── JobList.jsx             # Job listing with drag & drop
+│   │   │   ├── JobModal.jsx            # Job creation/edit modal
+│   │   │   └── ArchivedList.jsx        # Archived jobs view
+│   │   ├── candidate/
+│   │   │   ├── CandidateList.jsx       # Candidate listing with filters
+│   │   │   └── CandidateModal.jsx      # Candidate creation/edit modal
+│   │   ├── kanban/
+│   │   │   └── KanbanBoard.jsx         # Drag & drop board with stages
+│   │   └── common/                     # Shared UI components
+│   │       ├── Toast.jsx               # Notification system
+│   │       ├── ConfirmDialog.jsx       # CoAnfirmation dialogs
+│   │       └── buttons/
+│   │           ├── PrimaryButton.jsx   # Primary action button
+│   │           ├── SecondaryButton.jsx # Secondary action button
+│   │           └── LinkButton.jsx      # Link-style button
+│   │
+│   └── lib/                            # Utility libraries
+│       ├── storage.js                  # LocalForage data persistence
+│       └── email.js                    # EmailJS integration
+```
+
 ## Documentation
 
 ### 📋 [Mock Server & Storage](#mock-server--storage)
